@@ -4,17 +4,17 @@ export const FinalCTA = styled.section`
     padding: 60px 20px;
     text-align: center;
 
-    background: linear-gradient(180deg, ${props => props.theme.colors.white} 0%, ${props => props.theme.colors.lightGray} 100%);
+    background: linear-gradient(180deg, ${(props) => props.theme.colors.white} 0%, ${(props) => props.theme.colors.lightGray} 100%);
     position: relative;
-    
+
     &::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         height: 1px;
-        background: linear-gradient(90deg, transparent, ${props => props.theme.colors.blue}30, transparent);
+        background: linear-gradient(90deg, transparent, ${(props) => props.theme.colors.blue}30, transparent);
     }
 
     form {
@@ -27,7 +27,9 @@ export const FinalCTA = styled.section`
         div {
             position: relative;
 
-            input, select {
+            input,
+            select,
+            option {
                 width: 100%;
                 max-width: 100%; /* garante que não ultrapasse o container */
                 box-sizing: border-box; /* considera padding e border na largura */
@@ -53,12 +55,9 @@ export const FinalCTA = styled.section`
                 padding-right: 2.5rem;
 
                 &:invalid {
-                    color: #757575;
-                }
-
-                option {
                     color: #424242;
                 }
+
             }
 
             span {

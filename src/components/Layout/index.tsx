@@ -2,10 +2,6 @@ import Head from "next/head"
 import dynamic from "next/dynamic";
 import { defaultSEO, getStructuredData } from "@/config/seo";
 
-const MobileNavigation = dynamic(() => import('@/components/MobileNavigation'), {
-    ssr: false
-});
-
 const Footer = dynamic(() => import('@/components/Footer'), { ssr: true });
 const WhatsAppButton = dynamic(() => import('@/components/WhatsAppButton'), { 
     ssr: false,
@@ -73,7 +69,6 @@ const Layout = ({ children, customSEO }: LayoutProps) => {
             <main>{children}</main>
             
             <WhatsAppButton />
-            <MobileNavigation />
             <Footer />
         </>
     );

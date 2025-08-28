@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components"
 
 export const FAQ = styled.section`
     padding: 80px 20px;
@@ -100,7 +100,7 @@ export const FAQ = styled.section`
         }
 
         .whatsapp-button {
-            background: #25D366;
+            background: #25d366;
             color: white;
             border: none;
             padding: 12px 24px;
@@ -115,4 +115,8 @@ export const FAQ = styled.section`
             }
         }
     }
-`;
+
+    @media (max-width: 768px) {
+        padding: 20px;
+    }
+`
