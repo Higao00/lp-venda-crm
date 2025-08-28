@@ -61,7 +61,7 @@ export default function ExitIntent() {
                             <li>Setup completo em até 7 dias</li>
                         </ul>
 
-                        <button className="whatsapp-button" onClick={handleCTA}>
+                        <button className="cta-button whatsapp-button" onClick={handleCTA}>
                             Quero Aproveitar Esta Oferta
                         </button>
                     </S.Modal>
