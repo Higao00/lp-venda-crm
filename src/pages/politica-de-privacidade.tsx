@@ -10,7 +10,7 @@ export default function HomePage() {
                     name="description"
                     content="Conheça nossa política de privacidade."
                 />
-                <meta name="canonical" content="https://crm-personalizado.zurke.com.br/politica-de-privacidade" />
+                <meta name="canonical" content="https://www.crm.zurke.com.br/politica-de-privacidade" />
                 <meta
                     name="keywords"
                     content="politica de privacidade, CRM personalizado, gestão de clientes, automação de vendas, relacionamento com clientes, Zurke CRM, software de CRM, sistemas empresariais"
@@ -23,7 +23,7 @@ export default function HomePage() {
                 />
                 <meta
                     property="og:url"
-                    content="https://crm-personalizado.zurke.com.br/politica-de-privacidade"
+                    content="https://www.crm.zurke.com.br/politica-de-privacidade"
                 />
                 <meta property="og:type" content="website" />
                 <meta

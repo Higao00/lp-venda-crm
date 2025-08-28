@@ -11,7 +11,7 @@ export default function HomePage() {
                     name="description"
                     content="Oferecemos soluções de CRM sob medida para empresas que desejam melhorar o relacionamento com clientes e aumentar suas vendas."
                 />
-                <meta name="canonical" content="https://crm-personalizado.zurke.com.br" />
+                <meta name="canonical" content="https://www.crm-personalizado.zurke.com.br" />
                 <meta
                     name="keywords"
                     content="CRM personalizado, gestão de clientes, automação de vendas, relacionamento com clientes, Zurke CRM, software de CRM, sistemas empresariais"
@@ -24,7 +24,7 @@ export default function HomePage() {
                 />
                 <meta
                     property="og:url"
-                    content="https://crm-personalizado.zurke.com.br"
+                    content="https://www.crm-personalizado.zurke.com.br"
                 />
                 <meta property="og:type" content="website" />
                 <meta
