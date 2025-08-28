@@ -1,40 +1,76 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🚀 Landing Page CRM Personalizado
 
-## Getting Started
+Landing page moderna e otimizada para promover serviços de CRM personalizado, desenvolvida com Next.js e TypeScript.
 
-First, run the development server:
+## ✨ Características
+
+- ⚡ Performance otimizada com Next.js
+- 🎨 Design responsivo e moderno
+- 📱 PWA (Progressive Web App)
+- 🔍 SEO otimizado
+- 📊 Sistema de A/B Testing
+- 🖼️ Otimização de imagens
+- 💬 Integração com WhatsApp
+- 🎯 Exit Intent popups
+- ⏱️ Timer promocional
+
+## 🛠️ Tecnologias
+
+- [Next.js](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Styled Components](https://styled-components.com/)
+- [Framer Motion](https://www.framer.com/motion/)
+
+## 📦 Instalação
 
 ```bash
+# Clone o repositório
+git clone https://github.com/Higao00/lp-venda-crm.git
+
+# Entre no diretório
+cd lp-venda-crm
+
+# Instale as dependências
+npm install
+
+# Inicie o servidor de desenvolvimento
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Scripts Disponíveis
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- `npm run dev`: Inicia o servidor de desenvolvimento
+- `npm run build`: Cria a versão de produção
+- `npm run start`: Inicia o servidor de produção
+- `npm run lint`: Executa a verificação de linting
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## 📱 Componentes
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- `HeroSection`: Seção principal com chamada para ação
+- `About`: Informações sobre o CRM
+- `Problems`: Problemas resolvidos pelo CRM
+- `HowItWorks`: Como funciona o serviço
+- `Testimonials`: Depoimentos de clientes
+- `VideoSection`: Seção com vídeo demonstrativo
+- `FinalCTA`: Chamada final para ação
+- `WhatsAppButton`: Botão flutuante do WhatsApp
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 🎯 Otimizações
 
-## Learn More
+- Lazy loading de componentes
+- Otimização de imagens com next/image
+- Métricas de performance (Core Web Vitals)
+- SEO dinâmico por página
+- Cache e revalidação otimizados
 
-To learn more about Next.js, take a look at the following resources:
+## 📄 Licença
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 👨‍💻 Autor
 
-## Deploy on Vercel
+- [@Higao00](https://github.com/Higao00)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🤝 Contribuindo
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Contribuições são sempre bem-vindas! Por favor, leia as [diretrizes de contribuição](CONTRIBUTING.md) primeiro.
