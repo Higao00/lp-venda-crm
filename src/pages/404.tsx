@@ -31,9 +31,7 @@ export default function Page404() {
 
             </Head>
 
-            <Layout>
-                <NotFoundPage />
-            </Layout>
+            <NotFoundPage />
         </>
     )
 }

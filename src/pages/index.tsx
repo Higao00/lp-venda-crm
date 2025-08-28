@@ -29,7 +29,7 @@ export default function HomePage() {
                 <meta property="og:type" content="website" />
                 <meta
                     property="og:image"
-                    content="https://zurke-innovation.s3.us-east-1.amazonaws.com/LPs/crm-personalizado/og-image.webp"
+                    content="https://zurke-innovation.s3.us-east-1.amazonaws.com/LPs/crm-vendas/og-image.webp"
                 />
                 <meta property="og:locale" content="pt_BR" />
                 <meta property="og:site_name" content="Zurke Innovation" />
@@ -41,7 +41,7 @@ export default function HomePage() {
                 />
                 <meta
                     name="twitter:image"
-                    content="https://zurke-innovation.s3.us-east-1.amazonaws.com/LPs/crm-personalizado/og-image.webp"
+                    content="https://zurke-innovation.s3.us-east-1.amazonaws.com/LPs/crm-vendas/og-image.webp"
                 />
                 <meta property="twitter:card" content="summary_large_image" />
             </Head>
