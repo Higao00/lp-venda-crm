@@ -128,4 +128,8 @@ export const ProjectCard = styled.div`
             font-size: 0.9rem;
         }
     }
+
+    @media (max-width: 768px) {
+        min-height: 510px;
+    }
 `
