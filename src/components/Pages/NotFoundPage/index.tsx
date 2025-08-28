@@ -1,10 +1,8 @@
-'use client';
-
-import { useLayoutEffect, useRef } from 'react';
-// App Router: use 'next/navigation'
+import { useRef } from 'react';
 import { useRouter } from 'next/router';
 import * as THREE from 'three';
 import * as S from './styles';
+import { useIsomorphicLayoutEffect } from '@/hooks/useIsomorphicLayoutEffect';
 
 export default function NotFoundPage() {
     const router = useRouter();
@@ -15,7 +13,7 @@ export default function NotFoundPage() {
     const cubeRef = useRef<THREE.Group | null>(null);
     const roRef = useRef<ResizeObserver | null>(null);
 
-    useLayoutEffect(() => {
+    useIsomorphicLayoutEffect(() => {
         const wrap = wrapRef.current;
         if (!wrap) return;
 
@@ -24,14 +22,11 @@ export default function NotFoundPage() {
             antialias: true,
             alpha: true,
             powerPreference: 'high-performance',
-            // preserveDrawingBuffer: false (default)
         });
-        // canvas ocupa o container 100%
         renderer.domElement.style.width = '100%';
         renderer.domElement.style.height = '100%';
         renderer.setClearColor(0x000000, 0);
 
-        // DPR seguro
         const isMobile = () =>
             typeof window !== 'undefined' && matchMedia('(max-width: 860px)').matches;
         const getSafeDPR = () => {
@@ -39,7 +34,6 @@ export default function NotFoundPage() {
             return Math.min(isMobile() ? 1.5 : 2, dpr);
         };
         renderer.setPixelRatio(getSafeDPR());
-
         wrap.appendChild(renderer.domElement);
 
         // ---------- Scene / Camera ----------
@@ -72,11 +66,7 @@ export default function NotFoundPage() {
                 const square = new THREE.Mesh(geom, mat);
 
                 const egeom = new THREE.EdgesGeometry(geom);
-                const emat = new THREE.LineBasicMaterial({
-                    color: '#0B1220',
-                    opacity: 0.35,
-                    transparent: true
-                });
+                const emat = new THREE.LineBasicMaterial({ color: '#0B1220', opacity: 0.35, transparent: true });
                 square.add(new THREE.LineSegments(egeom, emat));
 
                 square.position.set((col - 1) * quadSize, (1 - row) * quadSize, 0);
@@ -107,26 +97,22 @@ export default function NotFoundPage() {
             let w = Math.max(1, Math.floor(rect.width));
             let h = Math.max(1, Math.floor(rect.height));
 
-            // fallback em iOS quando altura vem 0
             if (!w || !h) {
                 w = Math.max(1, Math.floor(window.innerWidth * 0.9));
                 h = Math.max(200, Math.floor(window.innerHeight * (isMobile() ? 0.35 : 0.6)));
             }
 
-            rendererRef.current.setSize(w, h, true); // TRUE = ajusta canvas style tbm
+            rendererRef.current.setSize(w, h, true);
             cameraRef.current.aspect = w / h;
             cameraRef.current.updateProjectionMatrix();
         };
 
-        // dimensiona antes do primeiro paint
         sizeToContainer();
 
-        // observa mudanças de tamanho do container
         const ro = new ResizeObserver(() => sizeToContainer());
         ro.observe(wrap);
         roRef.current = ro;
 
-        // DPR/orientation updates
         const onOrientation = () => {
             renderer.setPixelRatio(getSafeDPR());
             sizeToContainer();
@@ -137,18 +123,19 @@ export default function NotFoundPage() {
         const clock = new THREE.Clock();
         renderer.setAnimationLoop(() => {
             const dt = clock.getDelta();
-            // velocidade suave e constante
             cube.rotation.x += dt * 0.6;
             cube.rotation.y += dt * 0.72;
             renderer.render(scene, camera);
         });
 
-        setInterval(() => {
-            window.location.href = '/';
-        }, 5000)
+        // redireciona após 5s (limpo no cleanup)
+        const timeout = setTimeout(() => {
+            router.replace('/');
+        }, 5000);
 
         // ---------- Cleanup ----------
         return () => {
+            clearTimeout(timeout);
             window.removeEventListener('orientationchange', onOrientation);
             roRef.current?.disconnect();
             renderer.setAnimationLoop(null);
@@ -166,7 +153,6 @@ export default function NotFoundPage() {
                 wrap.removeChild(renderer.domElement);
             }
         };
-
     }, []);
 
     return (

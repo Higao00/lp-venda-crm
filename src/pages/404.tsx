@@ -1,6 +1,6 @@
 import Head from "next/head"
-import Layout from "@/components/Layout"
-import NotFoundPage from "@/components/Pages/NotFoundPage"
+import dynamic from 'next/dynamic';
+const NotFoundPage = dynamic(() => import('@/components/Pages/NotFoundPage'), { ssr: false });
 
 export default function Page404() {
     return (

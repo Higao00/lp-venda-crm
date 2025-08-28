@@ -5,9 +5,10 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import GlobalStyle from '@/styles/theme/global.styles';
 import themeColors from '@/styles/theme/themeColors';
-import { optimizeFontLoading, optimizeScriptLoading, useIdleDetection, usePreload } from '@/utils/performance';
+import { optimizeScriptLoading, useIdleDetection, usePreload } from '@/utils/performance';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import CookieConsentBar from '@/components/CookieConsentBar';
 
 const roboto = Roboto({
     subsets: ['latin'],
@@ -57,6 +58,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <ThemeProvider theme={themeColors}>
                 <GlobalStyle />
                 <ToastContainer />
+                <CookieConsentBar />
                 <Component {...pageProps} />
             </ThemeProvider>
         </div>
