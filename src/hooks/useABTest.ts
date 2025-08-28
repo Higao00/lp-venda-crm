@@ -23,7 +23,7 @@ const saveTestResult = (testId: string, variant: Variant, event: string) => {
     };
 
     // Log para desenvolvimento
-    console.log('A/B Test Result:', testData);
+    // console.log('A/B Test Result:', testData);
 };
 
 export function useABTest<T>({ testId, variants }: ABTestConfig): [T, (event: string) => void] {

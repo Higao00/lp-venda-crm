@@ -5,8 +5,9 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import GlobalStyle from '@/styles/theme/global.styles';
 import themeColors from '@/styles/theme/themeColors';
-import Layout from '@/components/Layout';
 import { optimizeFontLoading, optimizeScriptLoading, useIdleDetection, usePreload } from '@/utils/performance';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const roboto = Roboto({
     subsets: ['latin'],
@@ -55,6 +56,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <div className={roboto.className}>
             <ThemeProvider theme={themeColors}>
                 <GlobalStyle />
+                <ToastContainer />
                 <Component {...pageProps} />
             </ThemeProvider>
         </div>
