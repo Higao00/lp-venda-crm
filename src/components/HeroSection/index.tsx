@@ -8,6 +8,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import InputMask from 'react-input-mask';
 
+import { useLeadForm } from '@/hooks/useLeadForm';
+
 type FormData = {
     nome: string;
     phone: string;
@@ -42,7 +44,7 @@ export default function HeroSection() {
                     fill
                     style={{ objectFit: 'cover' }}
                     priority
-                    lowQualitySrc="https://zurke-innovation.s3.us-east-1.amazonaws.com/LPs/crm-vendas/banner-home-low.webp"
+                    lowQualitySrc="https://zurke-innovation.s3.us-east-1.amazonaws.com/LPs/crm-vendas/banner-home.webp"
                 />
             </div>
 
@@ -102,15 +104,29 @@ function ContactForm({ buttonText, onSubmit: onFormSubmit }: ContactFormProps) {
         reset,
     } = useForm<FormData>();
 
-    const onSubmit = (data: FormData) => {
-        const fullMessage = `Olá, meu nome é ${data.nome}.\n\nTenho interesse na soluções de CRM de vocês.\n\n📞 Telefone: ${data.phone}\n📧 Email: ${data.email}\n📝 Mensagem: ${data.message}`;
+    const { handleSubmit: handleLeadSubmit, isLoading, error: leadError, success } = useLeadForm();
 
-        const url = `https://api.whatsapp.com/send/?phone=5516991027826&text=${encodeURIComponent(fullMessage)}`;
-        window.open(url, '_blank');
+    const onSubmit = async (data: FormData) => {
+        // Salvar no Supabase
+        await handleLeadSubmit({
+            name: data.nome,
+            email: data.email,
+            phone: data.phone,
+            message: data.message
+        });
 
-        toast.success('Obrigado pelo contato! Redirecionando para o WhatsApp...');
-        onFormSubmit?.();
-        reset();
+        // Se salvou com sucesso, enviar para o WhatsApp
+        if (!leadError) {
+            const fullMessage = `Olá, meu nome é ${data.nome}.\n\nTenho interesse na soluções de CRM de vocês.\n\n📞 Telefone: ${data.phone}\n📧 Email: ${data.email}\n📝 Mensagem: ${data.message}`;
+            const url = `https://api.whatsapp.com/send/?phone=5516991027826&text=${encodeURIComponent(fullMessage)}`;
+            window.open(url, '_blank');
+
+            toast.success('Obrigado pelo contato! Redirecionando para o WhatsApp...');
+            onFormSubmit?.();
+            reset();
+        } else {
+            toast.error('Erro ao enviar formulário. Por favor, tente novamente.');
+        }
     };
 
     const animationVariants = {
@@ -185,8 +201,19 @@ function ContactForm({ buttonText, onSubmit: onFormSubmit }: ContactFormProps) {
                 </motion.div>
 
                 <motion.div variants={animationVariants}>
-                    <button className="whatsapp-button" type="submit">Entrar em contato</button>
+                    <button
+                        className="whatsapp-button"
+                        type="submit"
+                        disabled={isLoading}
+                    >
+                        {isLoading ? 'Enviando...' : buttonText}
+                    </button>
                 </motion.div>
+                {leadError && (
+                    <motion.div variants={animationVariants} className="error-message">
+                        {leadError}
+                    </motion.div>
+                )}
             </motion.form>
         </motion.div>
     );

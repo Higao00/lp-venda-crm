@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 interface LoadingSkeletonProps {
-    heightSize?: string;
+    $height?: string;
 }
 
 export const LoadingSkeleton = styled(motion.div)<LoadingSkeletonProps>`
     width: 100%;
-    height: ${props => props.heightSize || '20px'};
+    height: ${props => props.$height || '20px'};
     background: linear-gradient(
         90deg,
         ${props => props.theme.colors.lightGray} 0%,
@@ -48,7 +48,7 @@ export default function Loading({ lines = 3, height }: LoadingProps) {
             {Array.from({ length: lines }).map((_, index) => (
                 <LoadingSkeleton
                     key={index}
-                    heightSize={height}
+                    $height={height}
                     variants={skeletonVariants}
                     initial="initial"
                     animate="animate"

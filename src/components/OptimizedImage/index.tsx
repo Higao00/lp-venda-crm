@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 
-interface OptimizedImageProps extends Omit<ImageProps, 'onLoadingComplete' | 'loading'> {
+interface OptimizedImageProps extends Omit<ImageProps, 'onLoad' | 'loading'> {
     lowQualitySrc?: string;
 }
 
@@ -68,7 +68,7 @@ export default function OptimizedImage({
                 src={src}
                 alt={alt}
                 {...props}
-                onLoadingComplete={handleLoadingComplete}
+                onLoad={handleLoadingComplete}
                 style={{
                     opacity: isLoaded ? 1 : 0,
                     transition: 'opacity 0.5s ease-in-out',
